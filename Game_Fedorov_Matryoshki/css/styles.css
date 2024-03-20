@@ -1,0 +1,88 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.startgame {
+    background: rgb(49, 51, 51);
+    height: 100vh;
+    color: azure;
+    font-size: large;
+}
+.btn {
+    margin-top: 50px;
+    font-size: 30px;
+}
+
+#welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+#welcome p, #chooseDifficulty p{
+    font-size: 30px;
+}
+#blocks{
+    width: 500px;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+}
+.block {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    margin-top: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.block .btn{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.desc {
+    margin-left: 20%;
+}
+#chooseDifficulty{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+#chooseDifficulty div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* end page */
+#score {
+    margin-bottom: 30px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#leaders {
+    font-size: 20px;
+}
+
+#tab table {  
+    width: 100px;  
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}

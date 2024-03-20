@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин цветов</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+    <main class="main">
+        <section class="startgame">
+            <div class="wrapper">
+                <a href="../../index.html" ><button class="btn">На главную</button></a>
+            <div id="welcome">
+                <p> Игра Собери матрешку!</p>
+                <div id = "blocks">
+                    <div class="block">
+                        <button class="btn">Легкий</button>
+                        <button class="btn">Средний</button>
+                        <button class="btn">Сложный</button>
+                    </div>
+                    <div class="block">
+                        <div class="desc">На этом  уровне сложности нужно собрать матрешку соответствующего <span style="color: rgb(221, 211, 72);"><strong>Цвета</strong></span> и <span style="color: green;"><strong>Размера</strong></span></div>
+                        <div class="desc">На этом уровне уровне нужно собрать матрешку с соответствующим <span style="color: rgb(221, 211, 72);"><strong>Цветом</strong></span> или <span style="color: rgb(72, 137, 221);"><strong>Именем</strong></span></div>
+                        <div class="desc">На этом уровне нужно собрать матрешку  с соответствующим: <span style="color: green;"><strong>Размером</strong></span>, <span style="color: rgb(221, 211, 72);"><strong>Цветом</strong></span> и <span style="color: rgb(72, 137, 221);"><strong>Именем</strong></span> </div>
+                    </div>
+                </div>
+                <div class="startbtn">
+                    <button class="btn" id="start" onclick="menu()">Начать игру</button>
+                </div>
+            </div>
+            <div id="chooseDifficulty">
+                <p>Выберите сложность:</p>
+                <div>
+                    <button class="btn" id="easy">Легкая</button>
+                    <button class="btn" id="medium">Средняя</button>
+                    <button class="btn" id="hard">Сложная</button>
+                </div>
+            </div>
+        </section>
+        <script src="../scripts/menu.js"></script>
+    </main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин цветов</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+    <main class="main">
+        <section class="startgame">
+            <div class="wrapper">
+                <a href="startgame.html" ><button class="btn">На главную</button></a>
+            <div id="welcome">
+                <p id = "score"></p>
+                <div id = "leaders">Таблица лидеров:</div>
+                <div id = "tab"></div>
+                <div class="startbtn">
+                    <button class="btn" id="start" onclick="menu()">Еще раз!</button>
+                </div>
+            </div>
+            <div id="chooseDifficulty">
+                <p>Выберите сложность:</p>
+                <div>
+                    <button class="btn" id="easy">Легкая</button>
+                    <button class="btn" id="medium">Средняя</button>
+                    <button class="btn" id="hard">Сложная</button>
+                </div>
+            </div>
+        </section>
+        <script src="../scripts/menu.js"></script>
+        <script src="../scripts/leadertable.js"></script>
+    </main>
+</body>
+</html>
