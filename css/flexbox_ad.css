@@ -1,0 +1,97 @@
+.flexbox_ad{
+    width: 400px;
+    height: 400px;
+    background: url(../images/relax2.jpg);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    position: relative;
+}
+.flexbox_header{
+    content: url("../images/relax5.png");
+    height: 114px;
+    opacity: 0;
+}
+.text_t{
+    opacity: 0;   
+    position: absolute;
+    font-size: 30px;
+    width: 400px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.flexbox_body{
+    display: flex;
+    align-items: flex-end;
+    width: 400px;
+}
+
+.fox{
+   overflow: hidden; 
+}
+
+.fox::before{ 
+    content: url("../images/relax3.png");
+    transform: translateX(125px);
+    display: block;
+}
+
+.flexbox_ad:hover .fox::before{
+    transform: translateX(0px);
+    transition: 2s;
+}
+.flexbox_ad:hover .text_t{
+    opacity: 1;
+    transition: 2s;
+}
+
+
+@keyframes sun{
+    
+        from {transform: translateX(0px);}  
+        to {transform: translateX(286px) rotate(360deg);}
+    
+}
+.flexbox_ad:active .flexbox_header{
+    
+    opacity: 1;
+   animation: sun 1s infinite ease-in-out alternate both;
+    
+   
+}
+.flexbox_ad:active .flexbox_body > .fox{
+    content: url("../images/relax4.png");
+}
+.flexbox_ad:active .text_b{
+  opacity: 1;
+  transition: 2s;
+  
+}
+.flexbox_ad:active .text_t{
+    opacity: 0;
+    transition: 0s;
+  }
+
+.text_b{  
+    opacity: 0; 
+    transform: rotate(30deg);
+    content: "Лучший отдых!";
+    position: relative;
+    left: 100px;
+    top: 150px;  
+    font-size: 30px;
+    color:chocolate;
+}
+
+/**
+@keyframes ad_anim{
+    from {transform: translateY(-5px);}  
+    to {transform: translateY(5px);}
+}
+.flexbox_ad:hover:active{
+    animation: ad_anim 100ms infinite ease-in-out forwards;
+}
+**/

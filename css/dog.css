@@ -1,0 +1,110 @@
+.cont {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: antiquewhite;
+    margin-top: 100px;
+    display: flex;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 6px;
+    flex-direction:column;
+    justify-content: center;
+    resize: none;
+}
+.head_line p {
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 5px;
+    
+}
+.cont_game {
+    display: flex;
+    flex-direction: row;
+    min-height: 500px;
+}
+.menu_left{
+    background-color: aliceblue;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+}
+.menu_left p {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+}
+.menu_left img {
+    border-top: 1px solid rgba(128, 128, 128, 0.5);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+.menu_left button {
+    width: 100px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: cadetblue;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+#field {
+    background-color: aliceblue;
+    display: flex;
+    min-width: 300px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    flex: 1 0 25%;
+}
+.win_text{
+    position: absolute;
+    content: "Вы выиграли!";
+    text-align: center;
+    font-size: 20px;
+
+}
+#head {
+    background: url("../Images/head2.png");
+    width: 45px;
+    height: 30px;
+    position: absolute;
+}
+
+#chest {
+    content: url("../images/chest2.png");
+    width: 58px;
+    height: 47px;
+    position: absolute;
+}
+#leash{
+    content: url("../images/leash2.png");
+    width: 94px;
+    height: 58px;
+    position: absolute;
+}
+#collar{
+    content: url("../images/collar2.png");
+    width: 36px;
+    height: 29px;
+    position: absolute;
+}
+#croup{
+    content: url("../images/croup2.png");
+    width: 71px;
+    height: 59px;
+    position: absolute;
+}
+#ball{
+    content: url("../images/ball2.png");
+    width: 43px;
+    height: 44px;
+    position: absolute;
+}
+#tail{
+    content: url("../images/tail.png");
+    width: 69px;
+    height: 22px;
+    position: absolute;
+}
+
