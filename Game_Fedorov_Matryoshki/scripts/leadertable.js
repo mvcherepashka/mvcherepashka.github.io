@@ -27,10 +27,11 @@ const newTable = document.createElement('table');
 // Создаем заголовок таблицы
 const headerRow = newTable.insertRow();
 const headerName = headerRow.insertCell();
-headerName.textContent = 'Name';
+headerName.textContent = 'Имя';
+headerName.style.backgroundColor = 'rgb(92, 91, 91)';
 const headerScore = headerRow.insertCell();
-headerScore.textContent = 'Score';
-
+headerScore.textContent = 'Счет';
+headerScore.style.backgroundColor = 'rgb(92, 91, 91)';
 // Заполняем таблицу данными
 
 myArray.forEach(player => {

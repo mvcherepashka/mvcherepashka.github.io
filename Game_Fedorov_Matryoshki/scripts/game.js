@@ -285,7 +285,7 @@ function moveElementToAssembly(element) {
     let assemblyContainer = document.getElementById('assembly');
         assemblyContainer.appendChild(element);
         element.style.position = 'absolute';
-        element.style.top = '35%';
+        element.style.top = '30%';
         element.style.left = '22.5%';
         element.style.cursor = 'default';
 }
