@@ -52,12 +52,19 @@ background:beige;
 }
 #example {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 100%; 
     height: 50%;
     background-color: rgb(235, 221, 204);
     border-radius: 6px 0px 0px;
 }
+#example .replic {
+    text-align: center;
+    margin-top: 100px;
+    width: 180px;
+}
+
 #example .matryoshka {
     margin-top: 100px;
 }
@@ -69,6 +76,12 @@ background:beige;
     height: 50%;
     background-color: rgb(235, 221, 204);
     border-radius: 0px 0px 0px 6px;
+}
+
+#win{
+   margin-top: 20px;
+   font-size: 30px;
+   display: none;
 }
 
 .matryoshka {

@@ -16,7 +16,10 @@ const blue = 'blue';
 const small = 'small';
 const medium = 'medium';
 const big = 'big';
-let arrayName = [/*'Таня', 'Саша', 'Катя'*/];
+
+let numReplic;
+let arrayName = [];
+let arrayOnPlace = [];
 
 let minutes = 0;
 let seconds = 30;
@@ -32,12 +35,15 @@ if (difficulty !== "easy") {
 }
 
 const n = 15;
-    const m = [];
-    for (var i=0; i<5; i++) {
-        m.push(addElem(getRandomName()));
-    }
+const m = [];
+for (var i=0; i<5; i++) {
+    m.push(addElem(getRandomName()));
+}
 
-addElemExmaple(getRandomMatryoshka());
+if (difficulty === "hard") {
+    addReplic();
+} else {addElemExmaple(getRandomMatryoshka());}
+
 generate();
 
 function eventClick(event) {
@@ -51,6 +57,7 @@ function eventClick(event) {
         if (arrayMatryoshka.length === 0) {
             count +=100;  
             scope.textContent = 'Счет:' + count;  
+            winText(true);
             addTime(5);
             update();
         }
@@ -77,14 +84,6 @@ function mouseDown(e) {
     function moveAt(x, y) {
         elem.style.left = x + 'px';
         elem.style.top = y + 'px';
-        /*
-        if (x < field_minx) {elem.style.left = field_minx + 'px';}
-    else if (x > field_maxx) {elem.style.left = field_maxx + 'px';}
-        else {elem.style.left = x + 'px';}
-    if (y <field_miny) {elem.style.top = field_miny + 'px';}
-    else if (y >field_maxy) {elem.style.top = (field_maxy ) + 'px';}
-        else {elem.style.top = y + 'px';}
-        */
     }
 
     function mouseMove(e) {
@@ -116,6 +115,7 @@ function checkMedium(elem, assemblyContainer) {
         if (arrayMatryoshka.length === 0) {
             count +=220;  
             scope.textContent = 'Счет:' + count;  
+            winText(true);
             addTime(10);
             update();
         }
@@ -123,19 +123,81 @@ function checkMedium(elem, assemblyContainer) {
 }
 
 function checkHard(elem, assemblyContainer) {
-    if (collision(elem, assemblyContainer) && elem.classList.contains(arrayMatryoshka[0].size) && elem.classList.contains(arrayMatryoshka[0].color) && elem.classList.contains(arrayMatryoshka[0].name)){
-        arrayMatryoshka.shift();
-        elem.classList.remove('animCircle');
-        const elemClone = elem.cloneNode(true);
-        moveElementToAssembly(elemClone);
-        elem.remove();
-        count +=100;    
-        scope.textContent = 'Счет:' + count;
-        if (arrayMatryoshka.length === 0) {
-            count +=400;  
-            scope.textContent = 'Счет:' + count;  
-            addTime(20);
-            update();
+    console.log(arrayOnPlace[0]);
+    if (collision(elem, assemblyContainer)) {
+        if (elem.classList.contains('big') && arrayOnPlace[0] === undefined) {
+            elem.classList.remove('animCircle');
+            const elemClone = elem.cloneNode(true);
+            moveElementToAssembly(elemClone);
+            elem.remove();
+            arrayOnPlace[0] = elemClone;
+        }
+        if (elem.classList.contains('medium') && arrayOnPlace[0] !== undefined && arrayOnPlace[1] === undefined) {
+            elem.classList.remove('animCircle');
+            const elemClone = elem.cloneNode(true);
+            moveElementToAssembly(elemClone);
+            elem.remove();
+            arrayOnPlace[1] = elemClone;
+        }
+        if (elem.classList.contains('small') && arrayOnPlace[1] !== undefined && arrayOnPlace[2] === undefined) {
+            elem.classList.remove('animCircle');
+            const elemClone = elem.cloneNode(true);
+            moveElementToAssembly(elemClone);
+            elem.remove();
+            arrayOnPlace[2] = elemClone;
+        }
+        let count = 0;
+        arrayOnPlace.forEach(element => {
+            if(element !== undefined) count++;
+        });
+        if (count === 3) {
+            switch (numReplic) {
+                case 0:
+                    if (arrayOnPlace[0].classList.contains("red")) {
+                        count +=400;    
+                        scope.textContent = 'Счет:' + count;
+                        winText(true);
+                        addTime(20);
+                        updateHard();
+                    } else {winText(false); updateHard();}
+                break;
+                case 1:
+                    if (arrayOnPlace[1].classList.contains("green")) {
+                        count +=400;    
+                        scope.textContent = 'Счет:' + count;
+                        winText(true);
+                        addTime(20);
+                        updateHard();
+                    } else {winText(false); updateHard();}
+                break;
+                case 2:
+                    if (arrayOnPlace[0].classList.contains("blue")) {
+                        count +=400;    
+                        scope.textContent = 'Счет:' + count;
+                        winText(true);
+                        addTime(20);
+                        updateHard();
+                    } else {winText(false); updateHard();};
+                break;
+                case 3:
+                    if (arrayOnPlace[2].classList.contains("Надя")) {
+                        count +=400;    
+                        scope.textContent = 'Счет:' + count;
+                        winText(true);
+                        addTime(20);
+                        updateHard();
+                    } else {winText(false); updateHard();}
+                break;
+                case 4:
+                    if (arrayOnPlace[1].classList.contains("Катя")) {
+                        count +=400;    
+                        scope.textContent = 'Счет:' + count;
+                        winText(true);
+                        addTime(20);
+                        updateHard();
+                    } else {winText(false); updateHard();}
+                break;
+            }
         }
     }
 }
@@ -150,14 +212,29 @@ function collision(elem, assemblyContainer) {
 function update() {
     arrayMatryoshka = getRandomMatryoshka();  
     let elementsToAssembly = assemblyContainer.querySelectorAll('.matryoshka');
-    elementsToAssembly.forEach(element => {
-        element.remove();
-    });
+    setTimeout(() => {
+        elementsToAssembly.forEach(element => {
+            element.remove();
+        });
+    }, 1000);
     let elementsToExample = exampleContainer.querySelectorAll('.matryoshka');
     elementsToExample.forEach(element => {
         element.remove();
     });
     addElemExmaple(arrayMatryoshka);
+}
+
+function updateHard() {
+    let elementsToAssembly = assemblyContainer.querySelectorAll('.matryoshka');
+    setTimeout(() => {
+        elementsToAssembly.forEach(element => {
+            element.remove();
+        });
+    }, 1000);
+    let elementToExample = exampleContainer.querySelector('.replic');
+    elementToExample.remove();
+    arrayOnPlace.splice(0, arrayOnPlace.length);
+    addReplic();
 }
 
 function eventRightClick(event) {
@@ -166,21 +243,18 @@ function eventRightClick(event) {
     if (event.target.classList.contains(small)) {
         event.target.classList.remove(small);
         event.target.classList.add(medium);
-        //event.target.style.transform = 'translate(-12.5px, -18.75px)';
         return;
     }
 
     if (event.target.classList.contains(medium)) {
         event.target.classList.remove(medium);
         event.target.classList.add(big);
-        //event.target.style.transform = 'translate(-30px, -45px)';
         return;
     }
 
     if (event.target.classList.contains(big)) {
         event.target.classList.remove(big);
         event.target.classList.add(small);
-        //event.target.style.transform = 'translate(0px, 0px)';
         return;
     }
 } 
@@ -188,7 +262,7 @@ function eventRightClick(event) {
 function addElem(name) {
     color = getRandomColor();
     name = getRandomName();
-    let fieldContainer = document.getElementById('field'); // Получаем контейнер field
+    let fieldContainer = document.getElementById('field'); 
 
     let matryoshkaDiv = document.createElement('div');
     matryoshkaDiv.classList.add('matryoshka', color, small, name);
@@ -209,7 +283,6 @@ function addElem(name) {
     let nameParagraph = document.createElement('p');
     nameParagraph.textContent = name;
 
-    // Строим структуру элементов вложенности
     headDiv.appendChild(eyesDiv1);
     headDiv.appendChild(eyesDiv2);
 
@@ -242,6 +315,70 @@ function addElemExmaple(arrayMatryoshka) {
     }
 }
 
+function addReplic() {
+    let replic = document.createElement('p');
+    let span = document.createElement('span');
+    let textNode;
+    numReplic = Math.floor(Math.random() * 5);
+    switch (numReplic) {
+        case 0:
+            span = document.createElement('span');
+            span.textContent = 'красная';
+            span.style.color = 'red';
+            span.style.fontWeight = 'bold'; 
+            textNode = document.createTextNode('Большая матрешка - ');
+            replic.appendChild(textNode);
+            replic.appendChild(span);
+            replic.classList.add('replic');
+            exampleContainer.appendChild(replic);
+            break;
+        case 1:
+            span = document.createElement('span');
+            span.textContent = 'зеленая';
+            span.style.color = 'green';
+            span.style.fontWeight = 'bold'; 
+            textNode = document.createTextNode('Средняя матрешка - ');
+            replic.appendChild(textNode);
+            replic.appendChild(span);
+            replic.classList.add('replic');
+            exampleContainer.appendChild(replic);
+            break;
+        case 2:
+            span = document.createElement('span');
+            span.textContent = 'синяя';
+            span.style.color = 'blue';
+            span.style.fontWeight = 'bold'; 
+            textNode = document.createTextNode('Большая матрешка - ');
+            replic.appendChild(textNode);
+            replic.appendChild(span);
+            replic.classList.add('replic');
+            exampleContainer.appendChild(replic);
+            break;
+        case 3:
+            span = document.createElement('span');
+            span.textContent = 'Надя';
+            span.style.color = 'rgb(153, 130, 0)';
+            span.style.fontWeight = 'bold'; 
+            textNode = document.createTextNode('Маленькая матрешка - ');
+            replic.appendChild(textNode);
+            replic.appendChild(span);
+            replic.classList.add('replic');
+            exampleContainer.appendChild(replic);
+            break;
+        case 4:
+            span = document.createElement('span');
+            span.textContent = 'Катя';
+            span.style.color = 'rgb(153, 130, 0)';
+            span.style.fontWeight = 'bold'; 
+            textNode = document.createTextNode('Средняя матрешка - ');
+            replic.appendChild(textNode);
+            replic.appendChild(span);
+            replic.classList.add('replic');
+            exampleContainer.appendChild(replic);
+            break;
+    }
+}
+
 function createElemExmaple(size, color, name) {
 
     let matryoshkaDiv = document.createElement('div');
@@ -270,7 +407,7 @@ function createElemExmaple(size, color, name) {
     } else if (size === "big") {
         matryoshkaDiv.style.transform = 'translate(0px, -45px)';
     }
-    // Строим структуру элементов вложенности
+
     headDiv.appendChild(eyesDiv1);
     headDiv.appendChild(eyesDiv2);
 
@@ -288,6 +425,13 @@ function moveElementToAssembly(element) {
         element.style.top = '30%';
         element.style.left = '22.5%';
         element.style.cursor = 'default';
+        
+        if (element.classList.contains('medium')) {
+            element.style.transform = 'translate(17.5px, 26.25px)';
+        } else if (element.classList.contains('small')) {
+            element.style.transform = 'translate(30px, 45px)';
+        }
+        
 }
 
 function getRandomColor() {
@@ -313,6 +457,7 @@ function getRandomMatryoshka() {
     return arrayMatryoshka;
 }
 
+
 function getRandomName() {
     var num = Math.floor(Math.random() * arrayName.length);
     return arrayName[num];
@@ -329,13 +474,27 @@ function generate() {
     }, 1000)
 }
 
-// Функция для обновления времени
+function winText(flag) {
+    const element = document.getElementById('win');
+
+    element.style.display = 'block';
+    if (flag) {
+        element.textContent = 'Правильно!';
+        element.style.color = 'green';
+    } else {
+        element.textContent = 'Неправильно!';
+        element.style.color = 'red';
+    }
+    setTimeout(() => {
+        element.style.display = 'none';
+    }, 1000);
+}
+
+
 function updateTimer() {
-    // Выводим оставшееся время только в минутах и секундах
     time.textContent = 'Время:' + ` ${minutes}:${seconds}`;
 }
 
-// Функция для добавления времени при событии
 function addTime(sec) {
     seconds += sec;
     if (seconds > 60) {
@@ -345,7 +504,6 @@ function addTime(sec) {
     updateTimer();
 }
 
-// Устанавливаем интервал для таймера
 let timerInterval = setInterval(function() {
     if (seconds > 0) {
         seconds -= 1;
@@ -362,3 +520,4 @@ let timerInterval = setInterval(function() {
     }
     updateTimer();
 }, 1000);
+
