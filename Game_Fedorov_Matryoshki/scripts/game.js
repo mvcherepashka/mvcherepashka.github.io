@@ -146,18 +146,18 @@ function checkHard(elem, assemblyContainer) {
             elem.remove();
             arrayOnPlace[2] = elemClone;
         }
-        let count = 0;
+        let check = 0;
         arrayOnPlace.forEach(element => {
-            if(element !== undefined) count++;
+            if(element !== undefined) check++;
         });
-        if (count === 3) {
+        if (check === 3) {
             switch (numReplic) {
                 case 0:
                     if (arrayOnPlace[0].classList.contains("red")) {
                         count +=400;    
                         scope.textContent = 'Счет:' + count;
                         winText(true);
-                        addTime(20);
+                        addTime(5);
                         updateHard();
                     } else {winText(false); updateHard();}
                 break;
@@ -166,7 +166,7 @@ function checkHard(elem, assemblyContainer) {
                         count +=400;    
                         scope.textContent = 'Счет:' + count;
                         winText(true);
-                        addTime(20);
+                        addTime(5);
                         updateHard();
                     } else {winText(false); updateHard();}
                 break;
@@ -175,7 +175,7 @@ function checkHard(elem, assemblyContainer) {
                         count +=400;    
                         scope.textContent = 'Счет:' + count;
                         winText(true);
-                        addTime(20);
+                        addTime(5);
                         updateHard();
                     } else {winText(false); updateHard();};
                 break;
@@ -184,7 +184,7 @@ function checkHard(elem, assemblyContainer) {
                         count +=400;    
                         scope.textContent = 'Счет:' + count;
                         winText(true);
-                        addTime(20);
+                        addTime(5);
                         updateHard();
                     } else {winText(false); updateHard();}
                 break;
@@ -193,7 +193,7 @@ function checkHard(elem, assemblyContainer) {
                         count +=400;    
                         scope.textContent = 'Счет:' + count;
                         winText(true);
-                        addTime(20);
+                        addTime(5);
                         updateHard();
                     } else {winText(false); updateHard();}
                 break;
