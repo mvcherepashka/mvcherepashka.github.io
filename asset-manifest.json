@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.59cae539.css",
-    "main.js": "/static/js/main.6f51722c.js",
+    "main.css": "/static/css/main.3e58faf0.css",
+    "main.js": "/static/js/main.ce238a2b.js",
     "static/media/pianoBackground.jpg": "/static/media/pianoBackground.22bb7933be2db24fcbad.jpg",
     "index.html": "/index.html",
-    "main.59cae539.css.map": "/static/css/main.59cae539.css.map",
-    "main.6f51722c.js.map": "/static/js/main.6f51722c.js.map"
+    "main.3e58faf0.css.map": "/static/css/main.3e58faf0.css.map",
+    "main.ce238a2b.js.map": "/static/js/main.ce238a2b.js.map"
   },
   "entrypoints": [
-    "static/css/main.59cae539.css",
-    "static/js/main.6f51722c.js"
+    "static/css/main.3e58faf0.css",
+    "static/js/main.ce238a2b.js"
   ]
 }
